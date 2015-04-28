@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using ServeurSmartCity.JsonReader;
 
 namespace ServeurSmartCity
 {
@@ -19,6 +20,8 @@ namespace ServeurSmartCity
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+            JsonReader.JsonReader json = new JsonReader.JsonReader();
+            json.readJson();
         }
     }
 }
