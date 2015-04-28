@@ -17,7 +17,7 @@ namespace ServeurSmartCity.JsonModel
         public string commune { get; set; }
         public string telephone { get; set; }
         public string fax { get; set; }
-        public string telephonefax { get; set; }
+        public string telephonefax { get; set; } // nope
         public string email { get; set; }
         public string siteweb { get; set; }
         public string facebook { get; set; }
