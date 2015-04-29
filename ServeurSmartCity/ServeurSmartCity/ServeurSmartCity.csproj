@@ -94,8 +94,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BonjourController.cs" />
     <Compile Include="Controllers\LieuxController.cs" />
-    <Compile Include="DAO\CreationTables.cs" />
     <Compile Include="DAO\DatabaseInfos.cs" />
+    <Compile Include="DAO\LieuDAO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

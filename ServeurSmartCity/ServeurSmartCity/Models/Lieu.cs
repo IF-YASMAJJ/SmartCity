@@ -14,7 +14,7 @@ namespace ServeurSmartCity.Models
     
     public partial class Lieu
     {
-        public int Id { get; set; }
+        public int Id { get; private set; }
         public string nom { get; set; }
         public string type { get; set; }
         public string type_detail { get; set; }
