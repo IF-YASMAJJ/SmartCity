@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Web.Http;
 using ServeurSmartCity.JsonReader;
 using ServeurSmartCity.DAO;
@@ -22,11 +23,14 @@ namespace ServeurSmartCity
                 defaults: new { id = RouteParameter.Optional }
             );
 
+            //ajout d'une nouvelle route vers getLieuByPosition
             config.Routes.MapHttpRoute(
                 name: "localisation",
                 routeTemplate: "api/{controller}/{latitude}/{longitude}"
             );
 
+
+            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/json"));
 
             JsonReader.JsonReader json = new JsonReader.JsonReader();
             json.readJson();

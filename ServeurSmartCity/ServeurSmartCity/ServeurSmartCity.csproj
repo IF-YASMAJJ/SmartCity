@@ -100,11 +100,13 @@
     </Compile>
     <Compile Include="JsonReader\JsonModel.cs" />
     <Compile Include="JsonReader\JsonReader.cs" />
+    <Compile Include="Models\CoordonneesTest.cs" />
     <Compile Include="Models\LieuComplement.cs" />
     <Compile Include="Models\LieuxTest.cs" />
     <Compile Include="Models\Lieu.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ListeLieuxTest.cs" />
     <Compile Include="Models\Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
