@@ -19,9 +19,8 @@ namespace ServeurSmartCity.Controllers
         private ModelContainer db = new ModelContainer();
 
         // GET: api/Lieux
-        public IQueryable<Lieu> GetLieuSet()
+        public IHttpActionResult GetLieuSet()
         {
-            return db.LieuSet;
         }
 
         // GET: api/Lieux/5
@@ -34,7 +33,7 @@ namespace ServeurSmartCity.Controllers
                 return NotFound();
             }
 
-            return Ok(lieu);
+            return Json(lieu);
         }
 
         public async Task<IHttpActionResult> GetLieuByPosition(double latitude, double longitude)
