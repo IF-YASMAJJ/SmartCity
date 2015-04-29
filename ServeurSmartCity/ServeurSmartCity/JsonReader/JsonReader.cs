@@ -17,6 +17,7 @@ namespace ServeurSmartCity.JsonReader
         private RootObject data;
         private float   minLat = (float)90.0D, maxLat = (float)0.0D, 
                         minLong = (float)180.0D, maxLong = (float)-180.0D;
+        
 
         async public void readJson()
         {
@@ -39,27 +40,6 @@ namespace ServeurSmartCity.JsonReader
                 if (latBuf > maxLat) maxLat = latBuf;
             }
 
-            //http://blogs.msdn.com/b/ogdifrance/archive/2011/07/13/de-la-g-233-o-et-des-maths.aspx
-            var latitude1 = minLat * Math.PI/180;
-            var latitude2 = maxLat * Math.PI / 180;
-            var longitude1 = minLong * Math.PI / 180;
-            var longitude2 = maxLong * Math.PI / 180;
-            var R = 6371d;
-            //d : distance en kilomètres entre les points extremums du domaine (testé)
-            //TODO : définir la taille des carrés
-            var d = R * Math.Acos(Math.Cos(latitude1) * Math.Cos(latitude2) *
-                    Math.Cos(longitude2 - longitude1) + Math.Sin(latitude1) *
-                             Math.Sin(latitude2));
-
-            /*
-             * Calcul custom par approximation
-             * Semble donner utiliser une bonne approximation par rapport au calcul ci-dessus
-             * Utilisable selon nos besoins (grille) car on sépare le calcul des distance sur les latitudes et longitudes.
-             * */
-            var dLat = Math.Abs(R*(latitude2 - latitude1));
-            var dLong = Math.Abs(R * (Math.Cos(((maxLat+minLat)/2) * Math.PI/180)) * (longitude2 - longitude1));
-            var dCustom = Math.Sqrt(Math.Pow(dLat,2.0) + Math.Pow(dLong,2.0));
-
             editModel();
         }
 
@@ -69,7 +49,9 @@ namespace ServeurSmartCity.JsonReader
             lDao.deleteLieux();
             foreach (Feature f in data.features){
                 Lieu l = new Lieu();
-                await lDao.addLieu(l.createLieu(f));
+                short abscisses = (short)((f.geometry.coordinates[1] - minLat)/DonneesGeographiques.tailleCarreGrilleRad);
+                short ordonnees = (short)((f.geometry.coordinates[0] - minLong) / DonneesGeographiques.tailleCarreGrilleRad);
+                await lDao.addLieu(l.createLieu(f, abscisses, ordonnees));
             }
         }
     }

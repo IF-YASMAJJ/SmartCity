@@ -9,7 +9,7 @@ namespace ServeurSmartCity.Models
 {
     public partial class Lieu
     {
-        public Lieu createLieu(Feature f)
+        public Lieu createLieu(Feature f, short abs, short ord)
         {
             //Lieu ret = new Lieu();
             Id = int.Parse(f.properties.id);
@@ -32,7 +32,8 @@ namespace ServeurSmartCity.Models
             producteur = f.properties.producteur;
             longitude = f.geometry.coordinates[0];
             latitude = f.geometry.coordinates[1];
-            //TODO : abscisses et ordonnées
+            abscisses = abs;
+            ordonnées = ord;
 
             return this;
         }
