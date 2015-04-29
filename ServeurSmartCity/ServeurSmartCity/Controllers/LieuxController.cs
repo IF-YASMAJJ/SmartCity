@@ -37,72 +37,17 @@ namespace ServeurSmartCity.Controllers
             return Ok(lieu);
         }
 
-        // PUT: api/Lieux/5
-        [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutLieu(int id, Lieu lieu)
+        public async Task<IHttpActionResult> GetLieuByPosition(double latitude, double longitude)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+           //Lieu lieu = await db.LieuSet.FindAsync(id2);
+           //if (lieu == null)
+           //{
+           //    return NotFound();
+           //}
 
-            if (id != lieu.Id)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(lieu).State = EntityState.Modified;
-
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!LieuExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(latitude + longitude);
         }
-
-        // POST: api/Lieux
-        [ResponseType(typeof(Lieu))]
-        public async Task<IHttpActionResult> PostLieu(Lieu lieu)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            db.LieuSet.Add(lieu);
-            await db.SaveChangesAsync();
-
-            return CreatedAtRoute("DefaultApi", new { id = lieu.Id }, lieu);
-        }
-
-        // DELETE: api/Lieux/5
-        [ResponseType(typeof(Lieu))]
-        public async Task<IHttpActionResult> DeleteLieu(int id)
-        {
-            Lieu lieu = await db.LieuSet.FindAsync(id);
-            if (lieu == null)
-            {
-                return NotFound();
-            }
-
-            db.LieuSet.Remove(lieu);
-            await db.SaveChangesAsync();
-
-            return Ok(lieu);
-        }
-
+        
         protected override void Dispose(bool disposing)
         {
             if (disposing)

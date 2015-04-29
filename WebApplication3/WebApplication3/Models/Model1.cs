@@ -24,5 +24,7 @@ namespace WebApplication3.Models
                 .Property(e => e.ndix)
                 .IsFixedLength();
         }
+
+        public System.Data.Entity.DbSet<WebApplication3.Models.Class1> Class1 { get; set; }
     }
 }

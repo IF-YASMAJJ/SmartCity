@@ -22,6 +22,12 @@ namespace ServeurSmartCity
                 defaults: new { id = RouteParameter.Optional }
             );
 
+            config.Routes.MapHttpRoute(
+                name: "localisation",
+                routeTemplate: "api/{controller}/{latitude}/{longitude}"
+            );
+
+
             JsonReader.JsonReader json = new JsonReader.JsonReader();
             json.readJson();
         }
