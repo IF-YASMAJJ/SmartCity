@@ -11,6 +11,7 @@ namespace ServeurSmartCity.Models
 {
     using System;
     using System.Collections.Generic;
+    using ServeurSmartCity.JsonModel;
     
     public partial class Lieu
     {
@@ -36,5 +37,30 @@ namespace ServeurSmartCity.Models
         public Nullable<double> longitude { get; set; }
         public Nullable<short> abscisses { get; set; }
         public Nullable<short> ordonnées { get; set; }
+
+        public Lieu(Feature f)
+        {
+            Id = int.Parse(f.properties.id_sitra1);
+            nom = f.properties.nom;
+            type = f.properties.type;
+            type_detail = f.properties.type_detail;
+            classement = f.properties.classement;
+            adresse = f.properties.adresse;
+            codepostal = f.properties.codepostal;
+            commune = f.properties.commune;
+            telephone = f.properties.telephone;
+            fax = f.properties.fax;
+            email = f.properties.email;
+            siteweb = f.properties.siteweb;
+            facebook = f.properties.facebook;
+            ouverture = f.properties.ouverture;
+            tarifsenclair = f.properties.tarifsenclair;
+            tarifsmin = f.properties.tarifsmin;
+            tarifsmax = f.properties.tarifsmax;
+            producteur = f.properties.producteur;
+            latitude = f.geometry.coordinates[0];
+            longitude = f.geometry.coordinates[1];
+            //TODO : abscisses et ordonnées
+        }
     }
 }
