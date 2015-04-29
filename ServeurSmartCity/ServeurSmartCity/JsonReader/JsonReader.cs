@@ -51,6 +51,15 @@ namespace ServeurSmartCity.JsonReader
                     Math.Cos(longitude2 - longitude1) + Math.Sin(latitude1) *
                              Math.Sin(latitude2));
 
+            /*
+             * Calcul custom par approximation
+             * Semble donner utiliser une bonne approximation par rapport au calcul ci-dessus
+             * Utilisable selon nos besoins (grille) car on sépare le calcul des distance sur les latitudes et longitudes.
+             * */
+            var dLat = Math.Abs(R*(latitude2 - latitude1));
+            var dLong = Math.Abs(R * (Math.Cos(((maxLat+minLat)/2) * Math.PI/180)) * (longitude2 - longitude1));
+            var dCustom = Math.Sqrt(Math.Pow(dLat,2.0) + Math.Pow(dLong,2.0));
+
             editModel();
         }
 
