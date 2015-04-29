@@ -28,7 +28,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <IntermediateOutputPath>C:\Users\Simon\AppData\Local\Temp\vs4A9A.tmp\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>F:\TEMP\vs52D1.tmp\Debug\</IntermediateOutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -37,7 +37,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <IntermediateOutputPath>C:\Users\Simon\AppData\Local\Temp\vs4A9A.tmp\Release\</IntermediateOutputPath>
+    <IntermediateOutputPath>F:\TEMP\vs52D1.tmp\Release\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
@@ -101,6 +101,7 @@
     </Compile>
     <Compile Include="JsonReader\JsonModel.cs" />
     <Compile Include="JsonReader\JsonReader.cs" />
+    <Compile Include="Models\LieuComplement.cs" />
     <Compile Include="Models\LieuxTest.cs" />
     <Compile Include="Models\Lieu.cs">
       <DependentUpon>Model.tt</DependentUpon>
