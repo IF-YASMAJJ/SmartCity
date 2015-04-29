@@ -30,8 +30,8 @@ namespace ServeurSmartCity.Models
             tarifsmin = f.properties.tarifsmin;
             tarifsmax = f.properties.tarifsmax;
             producteur = f.properties.producteur;
-            latitude = f.geometry.coordinates[0];
-            longitude = f.geometry.coordinates[1];
+            longitude = f.geometry.coordinates[0];
+            latitude = f.geometry.coordinates[1];
             //TODO : abscisses et ordonnées
 
             return this;
