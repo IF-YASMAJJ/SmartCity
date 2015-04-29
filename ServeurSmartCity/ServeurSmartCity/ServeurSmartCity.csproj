@@ -92,6 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\BonjourController.cs" />
     <Compile Include="Controllers\LieuxController.cs" />
     <Compile Include="DAO\CreationTables.cs" />
     <Compile Include="DAO\DatabaseInfos.cs" />
@@ -100,6 +101,7 @@
     </Compile>
     <Compile Include="JsonReader\JsonModel.cs" />
     <Compile Include="JsonReader\JsonReader.cs" />
+    <Compile Include="Models\LieuxTest.cs" />
     <Compile Include="Models\Lieu.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
