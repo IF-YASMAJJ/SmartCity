@@ -100,11 +100,8 @@
     </Compile>
     <Compile Include="JsonReader\JsonModel.cs" />
     <Compile Include="JsonReader\JsonReader.cs" />
-<<<<<<< HEAD
     <Compile Include="Models\CoordonneesTest.cs" />
-=======
     <Compile Include="Models\LieuComplement.cs" />
->>>>>>> 2e508f895314fe53667f2607232573e8175bab0a
     <Compile Include="Models\LieuxTest.cs" />
     <Compile Include="Models\Lieu.cs">
       <DependentUpon>Model.tt</DependentUpon>
