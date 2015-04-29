@@ -7,10 +7,10 @@ namespace ServeurSmartCity.Models
 {
     public class LieuxTest
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Category { get; set; }
-        public int Latitude { get; set; }
-        public int Longitude { get; set; }
+        public int id { get; set; }
+        public string nom { get; set; }
+        public string type { get; set; }
+        public string ouverture { get; set; }
+        public CoordonneesTest coordinates { get; set; }
     }
 }

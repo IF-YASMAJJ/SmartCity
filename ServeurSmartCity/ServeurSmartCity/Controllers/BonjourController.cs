@@ -4,7 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-
+using System.Web.Script.Serialization;
+using Newtonsoft.Json;
 using ServeurSmartCity.Models;
 
 namespace ServeurSmartCity.Controllers
@@ -12,31 +13,36 @@ namespace ServeurSmartCity.Controllers
     public class BonjourController : ApiController
     {
         // Controller simple de test
-
-        // Création des données
-        LieuxTest[] lieux = new LieuxTest[] 
-        { 
-            new LieuxTest { Id = 1, Name = "INSA", Category = "Education", Longitude = 4, Latitude = 45 }, 
-            new LieuxTest { Id = 2, Name = "Bellecour", Category = "Tourisme", Longitude = 5, Latitude = 42 }, 
-            new LieuxTest { Id = 3, Name = "UGC Cite Internationale", Category = "Loisir", Longitude = 3, Latitude = 48 } 
-        };
-
-        // GET : /api/Bonjour
-        public IHttpActionResult GetAllProducts()
+        private ListeLieuxTest liste;
+        public BonjourController()
         {
-            return Ok(lieux);
+            // Création des données
+            LieuxTest[] lieux = new LieuxTest[] 
+            { 
+                new LieuxTest { id = 100, nom = "Marché de Gros Lyon", type = "PATRIMOINE_CULTUREL", ouverture = "Lun au Vendr", coordinates = new CoordonneesTest { latitude = 4.9, longitude = 49.6 } }, 
+                new LieuxTest { id = 410, nom = "Comité Départemental du Cyclisme", type = "COMMERCE_ET_SERVICE", ouverture = "Mar au Vendr", coordinates = new CoordonneesTest { latitude = 4.8, longitude = 49.8 } }, 
+            };
+
+            liste = new ListeLieuxTest { nb = lieux.Length, points = lieux };
 
         }
 
-        // GET : /api/Bonjour/"un id"
-        public IHttpActionResult getLieux(int id)
+
+        // GET : /api/Bonjour
+        public IHttpActionResult GetAllLieux()
         {
-            var lieu = lieux.FirstOrDefault((p) => p.Id == id);
+            return Json(liste);
+        }
+
+        // GET : /api/Bonjour/"un id"
+        public IHttpActionResult GetLieux(int id)
+        {
+            var lieu = liste.points.FirstOrDefault((p) => p.id == id);
             if (lieu == null)
             {
                 return NotFound();
             }
-            return Ok(lieu);
+            return Json(lieu);
         }
     }
 }
