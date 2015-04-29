@@ -28,7 +28,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <IntermediateOutputPath>C:\Users\Simon\AppData\Local\Temp\vs4A9A.tmp\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\Simon\AppData\Local\Temp\vsF7D1.tmp\Debug\</IntermediateOutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -37,7 +37,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <IntermediateOutputPath>C:\Users\Simon\AppData\Local\Temp\vs4A9A.tmp\Release\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\Simon\AppData\Local\Temp\vsF7D1.tmp\Release\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
@@ -94,14 +94,17 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BonjourController.cs" />
     <Compile Include="Controllers\LieuxController.cs" />
-    <Compile Include="DAO\CreationTables.cs" />
-    <Compile Include="DAO\DatabaseInfos.cs" />
+    <Compile Include="DAO\LieuDAO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="JsonReader\JsonModel.cs" />
     <Compile Include="JsonReader\JsonReader.cs" />
+<<<<<<< HEAD
     <Compile Include="Models\CoordonneesTest.cs" />
+=======
+    <Compile Include="Models\LieuComplement.cs" />
+>>>>>>> 2e508f895314fe53667f2607232573e8175bab0a
     <Compile Include="Models\LieuxTest.cs" />
     <Compile Include="Models\Lieu.cs">
       <DependentUpon>Model.tt</DependentUpon>

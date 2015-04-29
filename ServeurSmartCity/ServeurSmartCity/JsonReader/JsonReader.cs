@@ -6,6 +6,9 @@ using System.Net.Http;
 using ServeurSmartCity.JsonModel;
 using Newtonsoft.Json;
 
+using ServeurSmartCity.DAO;
+using ServeurSmartCity.Models;
+
 namespace ServeurSmartCity.JsonReader
 {
     public class JsonReader
@@ -20,7 +23,18 @@ namespace ServeurSmartCity.JsonReader
             String json = await c.GetStringAsync(uri);
 
             data = JsonConvert.DeserializeObject<RootObject>(json);
-         
+
+            editModel();
+        }
+
+        private async void editModel()
+        {
+            LieuDAO lDao = new LieuDAO();
+            lDao.deleteLieux();
+            foreach (Feature f in data.features){
+                Lieu l = new Lieu();
+                await lDao.addLieu(l.createLieu(f));
+            }
         }
     }
 }
