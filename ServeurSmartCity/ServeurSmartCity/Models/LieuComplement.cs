@@ -9,8 +9,9 @@ namespace ServeurSmartCity.Models
 {
     public partial class Lieu
     {
-        public Lieu(Feature f)
+        public Lieu createLieu(Feature f)
         {
+            //Lieu ret = new Lieu();
             Id = int.Parse(f.properties.id);
             nom = f.properties.nom;
             type = f.properties.type;
@@ -32,6 +33,8 @@ namespace ServeurSmartCity.Models
             latitude = f.geometry.coordinates[0];
             longitude = f.geometry.coordinates[1];
             //TODO : abscisses et ordonnées
+
+            return this;
         }
     }
 }

@@ -22,8 +22,6 @@ namespace ServeurSmartCity
                 defaults: new { id = RouteParameter.Optional }
             );
 
-            DatabaseInfos.onStart();
-
             JsonReader.JsonReader json = new JsonReader.JsonReader();
             json.readJson();
         }

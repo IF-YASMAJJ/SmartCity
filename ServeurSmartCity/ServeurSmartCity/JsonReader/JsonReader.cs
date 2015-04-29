@@ -27,11 +27,13 @@ namespace ServeurSmartCity.JsonReader
             editModel();
         }
 
-        private void editModel()
+        private async void editModel()
         {
             LieuDAO lDao = new LieuDAO();
+            lDao.deleteLieux();
             foreach (Feature f in data.features){
-                lDao.addLieu(new Lieu(f));
+                Lieu l = new Lieu();
+                await lDao.addLieu(l.createLieu(f));
             }
         }
     }

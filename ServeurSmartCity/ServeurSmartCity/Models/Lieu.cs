@@ -14,7 +14,7 @@ namespace ServeurSmartCity.Models
     
     public partial class Lieu
     {
-        public int Id { get; private set; }
+        public int Id { get; set; }
         public string nom { get; set; }
         public string type { get; set; }
         public string type_detail { get; set; }
@@ -36,7 +36,5 @@ namespace ServeurSmartCity.Models
         public Nullable<double> longitude { get; set; }
         public Nullable<short> abscisses { get; set; }
         public Nullable<short> ordonnées { get; set; }
-
-
     }
 }

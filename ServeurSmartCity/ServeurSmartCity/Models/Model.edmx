@@ -46,7 +46,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" cg:SetterAccess="Private" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" cg:SetterAccess="Public" />
           <Property Name="nom" Type="String" Nullable="true" />
           <Property Name="type" Type="String" Nullable="true" />
           <Property Name="type_detail" Type="String" Nullable="true" />

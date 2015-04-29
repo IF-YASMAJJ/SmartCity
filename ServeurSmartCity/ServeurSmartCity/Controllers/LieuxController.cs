@@ -16,7 +16,7 @@ namespace ServeurSmartCity.Controllers
 {
     public class LieuxController : ApiController
     {
-        private ModelContainer db = DatabaseInfos.db;
+        private ModelContainer db = new ModelContainer();
 
         // GET: api/Lieux
         public IQueryable<Lieu> GetLieuSet()
