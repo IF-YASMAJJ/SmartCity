@@ -10,12 +10,13 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ServeurSmartCity.Models;
+using ServeurSmartCity.DAO;
 
 namespace ServeurSmartCity.Controllers
 {
     public class LieuxController : ApiController
     {
-        private ModelContainer db = new ModelContainer();
+        private ModelContainer db = DatabaseInfos.db;
 
         // GET: api/Lieux
         public IQueryable<Lieu> GetLieuSet()
