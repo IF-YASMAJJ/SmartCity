@@ -52,9 +52,6 @@ namespace ServeurSmartCity.JsonReader
                 short[] coordonnees = new short[2];
                 DonneesGeographiques.calculerCoordonnees((float)f.geometry.coordinates[0], (float)f.geometry.coordinates[1], coordonnees);
 
-                //Tests
-                float d = DonneesGeographiques.distanceTest((float)f.geometry.coordinates[0], (float)f.geometry.coordinates[1]);
-
                 await lDao.addLieu(l.createLieu(f, coordonnees));
             }
         }
