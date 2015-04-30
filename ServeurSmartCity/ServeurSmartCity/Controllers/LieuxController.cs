@@ -21,6 +21,7 @@ namespace ServeurSmartCity.Controllers
         // GET: api/Lieux
         public IHttpActionResult GetLieuSet()
         {
+            return Json(db.LieuResume.ToList<LieuResume>());
         }
 
         // GET: api/Lieux/5

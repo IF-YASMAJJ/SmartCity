@@ -26,5 +26,6 @@ namespace ServeurSmartCity.Models
         }
     
         public virtual DbSet<Lieu> LieuSet { get; set; }
+        public virtual DbSet<LieuResume> LieuResume { get; set; }
     }
 }

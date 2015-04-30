@@ -28,7 +28,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <IntermediateOutputPath>F:\TEMP\vs6796.tmp\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\Simon\AppData\Local\Temp\vs6D27.tmp\Debug\</IntermediateOutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -37,7 +37,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <IntermediateOutputPath>F:\TEMP\vs6796.tmp\Release\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\Simon\AppData\Local\Temp\vs6D27.tmp\Release\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
@@ -88,6 +88,7 @@
     </Content>
     <Content Include="Global.asax" />
     <Content Include="Models\Model.edmx.sql" />
+    <Content Include="Models\SQLQuery2.sql" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -103,6 +104,9 @@
     <Compile Include="Models\CoordonneesTest.cs" />
     <Compile Include="Models\DonneesGeographiques.cs" />
     <Compile Include="Models\LieuComplement.cs" />
+    <Compile Include="Models\LieuResume.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\LieuxTest.cs" />
     <Compile Include="Models\Lieu.cs">
       <DependentUpon>Model.tt</DependentUpon>

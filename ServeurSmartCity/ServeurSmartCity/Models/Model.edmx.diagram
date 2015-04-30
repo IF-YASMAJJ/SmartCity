@@ -6,6 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="afac7adfa5654ebe9909832ac308ec5c" Name="Diagram1" ZoomLevel="66" >
         <EntityTypeShape EntityType="Model.Lieu" Width="5.375" PointX="4" PointY="0.5" />
+        <EntityTypeShape EntityType="Model.LieuResume" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
