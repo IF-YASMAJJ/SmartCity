@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 04/30/2015 08:22:03
--- Generated from EDMX file: H:\PLD Smart\SmartCity\ServeurSmartCity\ServeurSmartCity\Models\Model.edmx
+-- Date Created: 05/04/2015 09:04:38
+-- Generated from EDMX file: C:\Users\Simon\Documents\GitHub\SmartCity\ServeurSmartCity\ServeurSmartCity\Models\Model.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -53,7 +53,7 @@ CREATE TABLE [dbo].[LieuSet] (
     [latitude] float  NULL,
     [longitude] float  NULL,
     [abscisses] smallint  NULL,
-    [ordonnées] smallint  NULL
+    [ordonnees] smallint  NULL
 );
 GO
 

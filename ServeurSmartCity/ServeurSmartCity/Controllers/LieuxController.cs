@@ -37,15 +37,34 @@ namespace ServeurSmartCity.Controllers
             return Json(lieu);
         }
 
-        public async Task<IHttpActionResult> GetLieuByPosition(double latitude, double longitude)
+        // GET: api/Lieux/4.5/45.8/
+        //Ne pas oublier / à la fin.
+        public async Task<IHttpActionResult> GetLieuByPosition(float latitude, float longitude)
         {
-           //Lieu lieu = await db.LieuSet.FindAsync(id2);
-           //if (lieu == null)
-           //{
-           //    return NotFound();
-           //}
+            short[] coordonneesSmartphone = new short[2];
+            DonneesGeographiques.calculerCoordonnees(longitude, latitude, coordonneesSmartphone);
 
-            return Ok(latitude + longitude);
+            List<LieuResume> res;
+            short c = coordonneesSmartphone[0];
+            short d = coordonneesSmartphone[1];
+            //res = (DbSet<Lieu>)db.LieuSet.Where(l => l.longitude == coordonneesSmartphone[0] && l.latitude == coordonneesSmartphone[1]);
+            res = db.LieuResume.Where(l => l.abscisses == c && l.ordonnees == d).ToList<LieuResume>(); //.Where(l => l.longitude == coordonneesSmartphone[0]);
+
+            return Json(res);
+        }
+
+        public async Task<IHttpActionResult> GetLieuByPositionLimite(float latitude, float longitude, int limite)
+        {
+            short[] coordonneesSmartphone = new short[2];
+            DonneesGeographiques.calculerCoordonnees(longitude, latitude, coordonneesSmartphone);
+
+            List<LieuResume> res;
+            short c = coordonneesSmartphone[0];
+            short d = coordonneesSmartphone[1];
+            //res = (DbSet<Lieu>)db.LieuSet.Where(l => l.longitude == coordonneesSmartphone[0] && l.latitude == coordonneesSmartphone[1]);
+            res = db.LieuResume.Where(l => l.abscisses == c && l.ordonnees == d).ToList<LieuResume>(); //.Where(l => l.longitude == coordonneesSmartphone[0]);
+
+            return Json(res);
         }
         
         protected override void Dispose(bool disposing)

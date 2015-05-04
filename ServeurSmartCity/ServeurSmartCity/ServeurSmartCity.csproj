@@ -87,6 +87,7 @@
       <DependentUpon>Database1.mdf</DependentUpon>
     </Content>
     <Content Include="Global.asax" />
+    <Content Include="Models\dbo.LieuResume.sql" />
     <Content Include="Models\Model.edmx.sql" />
     <Content Include="Web.config" />
   </ItemGroup>

@@ -33,7 +33,7 @@ namespace ServeurSmartCity.Models
             longitude = f.geometry.coordinates[0];
             latitude = f.geometry.coordinates[1];
             abscisses = coordonnes[0];
-            ordonnées = coordonnes[1];
+            ordonnees = coordonnes[1];
 
             return this;
         }
