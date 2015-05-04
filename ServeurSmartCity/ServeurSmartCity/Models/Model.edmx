@@ -30,7 +30,7 @@
           <Property Name="latitude" Type="float" />
           <Property Name="longitude" Type="float" />
           <Property Name="abscisses" Type="smallint" />
-          <Property Name="ordonnées" Type="smallint" />
+          <Property Name="ordonnees" Type="smallint" />
         </EntityType>
         <!--Erreurs détectées durant la génération :
 avertissement 6002: La table/vue 'C:\USERS\SIMON\DOCUMENTS\GITHUB\SMARTCITY\SERVEURSMARTCITY\SERVEURSMARTCITY\APP_DATA\DATABASE1.MDF.dbo.LieuResume' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
@@ -91,18 +91,18 @@ avertissement 6002: La table/vue 'C:\USERS\SIMON\DOCUMENTS\GITHUB\SMARTCITY\SERV
           <Property Name="latitude" Type="Double" Nullable="true" />
           <Property Name="longitude" Type="Double" Nullable="true" />
           <Property Name="abscisses" Type="Int16" Nullable="true" />
-          <Property Name="ordonnées" Type="Int16" Nullable="true" />
+          <Property Name="ordonnees" Type="Int16" Nullable="true" />
         </EntityType>
-        <EntityType Name="LieuResume" Abstract="false">
+        <EntityType Name="LieuResume">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ouverture" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="latitude" Type="Double" />
           <Property Name="longitude" Type="Double" />
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -134,19 +134,19 @@ avertissement 6002: La table/vue 'C:\USERS\SIMON\DOCUMENTS\GITHUB\SMARTCITY\SERV
           <ScalarProperty Name="latitude" ColumnName="latitude" />
           <ScalarProperty Name="longitude" ColumnName="longitude" />
           <ScalarProperty Name="abscisses" ColumnName="abscisses" />
-          <ScalarProperty Name="ordonnées" ColumnName="ordonnées" />
+          <ScalarProperty Name="ordonnees" ColumnName="ordonnees" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
           <EntitySetMapping Name="LieuResume">
             <EntityTypeMapping TypeName="Model.LieuResume">
               <MappingFragment StoreEntitySet="LieuResume">
-                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="longitude" ColumnName="longitude" />
                 <ScalarProperty Name="latitude" ColumnName="latitude" />
                 <ScalarProperty Name="ouverture" ColumnName="ouverture" />
                 <ScalarProperty Name="type" ColumnName="type" />
                 <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

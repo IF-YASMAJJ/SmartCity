@@ -14,11 +14,11 @@ namespace ServeurSmartCity.Models
     
     public partial class LieuResume
     {
+        public int Id { get; set; }
         public string nom { get; set; }
         public string type { get; set; }
         public string ouverture { get; set; }
         public Nullable<double> latitude { get; set; }
         public Nullable<double> longitude { get; set; }
-        public int Id { get; set; }
     }
 }

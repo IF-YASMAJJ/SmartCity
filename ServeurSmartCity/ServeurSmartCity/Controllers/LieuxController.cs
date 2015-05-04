@@ -56,7 +56,12 @@ namespace ServeurSmartCity.Controllers
            //{
            //    return NotFound();
            //}
+            short[] coordonneesSmartphone = {51,36};
+            short a = 51;
+            short b = 36;
 
+
+            var res = db.LieuSet.Where(l => l.abscisses == a && l.ordonnees == b);
             return Ok(latitude + longitude);
         }
         
