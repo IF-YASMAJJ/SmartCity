@@ -26,11 +26,12 @@ namespace ServeurSmartCity
             //ajout d'une nouvelle route vers getLieuByPosition
             config.Routes.MapHttpRoute(
                 name: "localisation",
-                routeTemplate: "api/{controller}/{latitude}/{longitude}"
+                routeTemplate: "api/{controller}/{longitude}/{latitude}"
             );
 
 
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/json"));
+
 
             JsonReader.JsonReader json = new JsonReader.JsonReader();
             json.readJson();
