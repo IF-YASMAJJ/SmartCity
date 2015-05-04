@@ -52,6 +52,20 @@ namespace ServeurSmartCity.Controllers
 
             return Json(res);
         }
+
+        public async Task<IHttpActionResult> GetLieuByPositionLimite(float latitude, float longitude, int limite)
+        {
+            short[] coordonneesSmartphone = new short[2];
+            DonneesGeographiques.calculerCoordonnees(longitude, latitude, coordonneesSmartphone);
+
+            List<LieuResume> res;
+            short c = coordonneesSmartphone[0];
+            short d = coordonneesSmartphone[1];
+            //res = (DbSet<Lieu>)db.LieuSet.Where(l => l.longitude == coordonneesSmartphone[0] && l.latitude == coordonneesSmartphone[1]);
+            res = db.LieuResume.Where(l => l.abscisses == c && l.ordonnees == d).ToList<LieuResume>(); //.Where(l => l.longitude == coordonneesSmartphone[0]);
+
+            return Json(res);
+        }
         
         protected override void Dispose(bool disposing)
         {
