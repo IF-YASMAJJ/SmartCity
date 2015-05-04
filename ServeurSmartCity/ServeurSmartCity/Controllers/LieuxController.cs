@@ -45,9 +45,19 @@ namespace ServeurSmartCity.Controllers
             short[] coordonneesSmartphone = new short[2];
             DonneesGeographiques.calculerCoordonnees(longitude, latitude, coordonneesSmartphone);
 
-            List<Lieu> res = requeteChercherProximite(coordonneesSmartphone[0], coordonneesSmartphone[1], 1);
+            List<LieuResume> res = requeteChercherProximite(coordonneesSmartphone[0], coordonneesSmartphone[1], 1);
 
-            return Ok(latitude + longitude);
+            return Json(res);
+        }
+
+        public async Task<IHttpActionResult> GetLieuByPositionLimite(float latitude, float longitude, short limite)
+        {
+            short[] coordonneesSmartphone = new short[2];
+            DonneesGeographiques.calculerCoordonnees(longitude, latitude, coordonneesSmartphone);
+
+            List<LieuResume> res = requeteChercherProximite(coordonneesSmartphone[0], coordonneesSmartphone[1], limite);
+
+            return Json(res);
         }
         
         protected override void Dispose(bool disposing)
@@ -64,12 +74,12 @@ namespace ServeurSmartCity.Controllers
             return db.LieuSet.Count(e => e.Id == id) > 0;
         }
 
-        private List<Lieu> requeteChercherProximite(short abscTelephone, short ordTelephone, short ecart)
+        private List<LieuResume> requeteChercherProximite(short abscTelephone, short ordTelephone, short ecart)
         {
-            List<Lieu> res = db.LieuSet.Where(l =>  l.abscisses >= abscTelephone-ecart && 
+            List<LieuResume> res = db.LieuResume.Where(l =>  l.abscisses >= abscTelephone-ecart && 
                                                     l.abscisses <= abscTelephone+ecart &&
                                                     l.ordonnees >= ordTelephone-ecart &&
-                                                    l.ordonnees <= ordTelephone+ecart).ToList<Lieu>();
+                                                    l.ordonnees <= ordTelephone+ecart).ToList<LieuResume>();
             if (res.Count < nbResultatsMinimum)
             {
                 return requeteChercherProximite(abscTelephone, ordTelephone, ++ecart);

@@ -44,6 +44,8 @@ avertissement 6002: La table/vue 'C:\USERS\SIMON\DOCUMENTS\GITHUB\SMARTCITY\SERV
           <Property Name="ouverture" Type="nvarchar(max)" />
           <Property Name="latitude" Type="float" />
           <Property Name="longitude" Type="float" />
+          <Property Name="abscisses" Type="smallint" />
+          <Property Name="ordonnees" Type="smallint" />
         </EntityType>
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="LieuSet" EntityType="Self.LieuSet" Schema="dbo" store:Type="Tables" />
@@ -54,7 +56,9 @@ avertissement 6002: La table/vue 'C:\USERS\SIMON\DOCUMENTS\GITHUB\SMARTCITY\SERV
     [LieuResume].[type] AS [type], 
     [LieuResume].[ouverture] AS [ouverture], 
     [LieuResume].[latitude] AS [latitude], 
-    [LieuResume].[longitude] AS [longitude]
+    [LieuResume].[longitude] AS [longitude], 
+    [LieuResume].[abscisses] AS [abscisses], 
+    [LieuResume].[ordonnees] AS [ordonnees]
     FROM [dbo].[LieuResume] AS [LieuResume]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
@@ -103,6 +107,8 @@ avertissement 6002: La table/vue 'C:\USERS\SIMON\DOCUMENTS\GITHUB\SMARTCITY\SERV
           <Property Name="ouverture" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="latitude" Type="Double" />
           <Property Name="longitude" Type="Double" />
+          <Property Name="abscisses" Type="Int16" />
+          <Property Name="ordonnees" Type="Int16" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -141,6 +147,8 @@ avertissement 6002: La table/vue 'C:\USERS\SIMON\DOCUMENTS\GITHUB\SMARTCITY\SERV
           <EntitySetMapping Name="LieuResume">
             <EntityTypeMapping TypeName="Model.LieuResume">
               <MappingFragment StoreEntitySet="LieuResume">
+                <ScalarProperty Name="ordonnees" ColumnName="ordonnees" />
+                <ScalarProperty Name="abscisses" ColumnName="abscisses" />
                 <ScalarProperty Name="longitude" ColumnName="longitude" />
                 <ScalarProperty Name="latitude" ColumnName="latitude" />
                 <ScalarProperty Name="ouverture" ColumnName="ouverture" />

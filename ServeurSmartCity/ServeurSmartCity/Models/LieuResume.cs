@@ -20,5 +20,7 @@ namespace ServeurSmartCity.Models
         public string ouverture { get; set; }
         public Nullable<double> latitude { get; set; }
         public Nullable<double> longitude { get; set; }
+        public Nullable<short> abscisses { get; set; }
+        public Nullable<short> ordonnees { get; set; }
     }
 }
