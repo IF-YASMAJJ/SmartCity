@@ -17,7 +17,7 @@ namespace ServeurSmartCity.Controllers
     public class LieuxController : ApiController
     {
         private ModelContainer db = new ModelContainer();
-        private const int nbResultatsMinimum = 200;
+        private const int nbResultatsMinimum = 10;
 
         // GET: api/Lieux
         public IHttpActionResult GetLieuSet()
@@ -53,6 +53,7 @@ namespace ServeurSmartCity.Controllers
             return Json(res);
         }
 
+        // GET: api/Lieux/4.83/45.76/
         public async Task<IHttpActionResult> GetLieuByPositionLimite(float latitude, float longitude, short limite)
         {
             short[] coordonneesSmartphone = new short[2];
