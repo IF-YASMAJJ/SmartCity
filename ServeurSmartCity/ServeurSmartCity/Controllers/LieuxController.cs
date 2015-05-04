@@ -44,25 +44,13 @@ namespace ServeurSmartCity.Controllers
             short[] coordonneesSmartphone = new short[2];
             DonneesGeographiques.calculerCoordonnees(longitude, latitude, coordonneesSmartphone);
 
-            List<Lieu> res;
-            short c = 60;
-            short d = 21;
+            List<LieuResume> res;
+            short c = coordonneesSmartphone[0];
+            short d = coordonneesSmartphone[1];
             //res = (DbSet<Lieu>)db.LieuSet.Where(l => l.longitude == coordonneesSmartphone[0] && l.latitude == coordonneesSmartphone[1]);
-            res = db.LieuSet.Where(l => l.abscisses == c && l.ordonnées == d).ToList<Lieu>(); //.Where(l => l.longitude == coordonneesSmartphone[0]);
+            res = db.LieuResume.Where(l => l.abscisses == c && l.ordonnees == d).ToList<LieuResume>(); //.Where(l => l.longitude == coordonneesSmartphone[0]);
 
-
-           //Lieu lieu = await db.LieuSet.FindAsync(id2);
-           //if (lieu == null)
-           //{
-           //    return NotFound();
-           //}
-            short[] coordonneesSmartphone = {51,36};
-            short a = 51;
-            short b = 36;
-
-
-            var res = db.LieuSet.Where(l => l.abscisses == a && l.ordonnees == b);
-            return Ok(latitude + longitude);
+            return Json(res);
         }
         
         protected override void Dispose(bool disposing)
