@@ -17,6 +17,7 @@ namespace ServeurSmartCity.Controllers
     public class LieuxController : ApiController
     {
         private ModelContainer db = new ModelContainer();
+        private const int nbResultatsMinimum = 200;
 
         // GET: api/Lieux
         public IHttpActionResult GetLieuSet()
@@ -37,32 +38,24 @@ namespace ServeurSmartCity.Controllers
             return Json(lieu);
         }
 
-        // GET: api/Lieux/4.5/45.8/
+        // GET: api/Lieux/4.83/45.76/
         //Ne pas oublier / à la fin.
         public async Task<IHttpActionResult> GetLieuByPosition(float latitude, float longitude)
         {
             short[] coordonneesSmartphone = new short[2];
             DonneesGeographiques.calculerCoordonnees(longitude, latitude, coordonneesSmartphone);
 
-            List<LieuResume> res;
-            short c = coordonneesSmartphone[0];
-            short d = coordonneesSmartphone[1];
-            //res = (DbSet<Lieu>)db.LieuSet.Where(l => l.longitude == coordonneesSmartphone[0] && l.latitude == coordonneesSmartphone[1]);
-            res = db.LieuResume.Where(l => l.abscisses == c && l.ordonnees == d).ToList<LieuResume>(); //.Where(l => l.longitude == coordonneesSmartphone[0]);
+            List<LieuResume> res = requeteChercherProximite(coordonneesSmartphone[0], coordonneesSmartphone[1], 1);
 
             return Json(res);
         }
 
-        public async Task<IHttpActionResult> GetLieuByPositionLimite(float latitude, float longitude, int limite)
+        public async Task<IHttpActionResult> GetLieuByPositionLimite(float latitude, float longitude, short limite)
         {
             short[] coordonneesSmartphone = new short[2];
             DonneesGeographiques.calculerCoordonnees(longitude, latitude, coordonneesSmartphone);
 
-            List<LieuResume> res;
-            short c = coordonneesSmartphone[0];
-            short d = coordonneesSmartphone[1];
-            //res = (DbSet<Lieu>)db.LieuSet.Where(l => l.longitude == coordonneesSmartphone[0] && l.latitude == coordonneesSmartphone[1]);
-            res = db.LieuResume.Where(l => l.abscisses == c && l.ordonnees == d).ToList<LieuResume>(); //.Where(l => l.longitude == coordonneesSmartphone[0]);
+            List<LieuResume> res = requeteChercherProximite(coordonneesSmartphone[0], coordonneesSmartphone[1], limite);
 
             return Json(res);
         }
@@ -79,6 +72,21 @@ namespace ServeurSmartCity.Controllers
         private bool LieuExists(int id)
         {
             return db.LieuSet.Count(e => e.Id == id) > 0;
+        }
+
+        private List<LieuResume> requeteChercherProximite(short abscTelephone, short ordTelephone, short ecart)
+        {
+            List<LieuResume> res = db.LieuResume.Where(l =>  l.abscisses >= abscTelephone-ecart && 
+                                                    l.abscisses <= abscTelephone+ecart &&
+                                                    l.ordonnees >= ordTelephone-ecart &&
+                                                    l.ordonnees <= ordTelephone+ecart).ToList<LieuResume>();
+            if (res.Count < nbResultatsMinimum)
+            {
+                return requeteChercherProximite(abscTelephone, ordTelephone, ++ecart);
+            }
+            else{
+                return res;
+            }
         }
     }
 }

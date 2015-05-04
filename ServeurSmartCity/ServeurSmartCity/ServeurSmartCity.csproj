@@ -28,7 +28,9 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+
     <IntermediateOutputPath>C:\Users\Simon\AppData\Local\Temp\vs8270.tmp\Debug\</IntermediateOutputPath>
+
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -37,7 +39,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+
     <IntermediateOutputPath>C:\Users\Simon\AppData\Local\Temp\vs8270.tmp\Release\</IntermediateOutputPath>
+
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
@@ -153,7 +157,6 @@
       <LastGenOutput>Model.cs</LastGenOutput>
       <DependentUpon>Model.edmx</DependentUpon>
     </Content>
-    <None Include="Properties\PublishProfiles\NomadeLyon.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
