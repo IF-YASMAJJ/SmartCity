@@ -37,8 +37,18 @@ namespace ServeurSmartCity.Controllers
             return Json(lieu);
         }
 
-        public async Task<IHttpActionResult> GetLieuByPosition(double latitude, double longitude)
+        // GET: api/Lieux/4.5/45.8/
+        //Ne pas oublier / à la fin.
+        public async Task<IHttpActionResult> GetLieuByPosition(float latitude, float longitude)
         {
+            short[] coordonneesSmartphone = new short[2];
+            DonneesGeographiques.calculerCoordonnees(longitude, latitude, coordonneesSmartphone);
+
+            DbSet<Lieu> res;
+            //res = (DbSet<Lieu>)db.LieuSet.Where(l => l.longitude == coordonneesSmartphone[0] && l.latitude == coordonneesSmartphone[1]);
+            res = (DbSet<Lieu>)db.LieuSet ; //.Where(l => l.longitude == coordonneesSmartphone[0]);
+
+
            //Lieu lieu = await db.LieuSet.FindAsync(id2);
            //if (lieu == null)
            //{
