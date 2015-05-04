@@ -44,9 +44,11 @@ namespace ServeurSmartCity.Controllers
             short[] coordonneesSmartphone = new short[2];
             DonneesGeographiques.calculerCoordonnees(longitude, latitude, coordonneesSmartphone);
 
-            DbSet<Lieu> res;
+            List<Lieu> res;
+            short c = 60;
+            short d = 21;
             //res = (DbSet<Lieu>)db.LieuSet.Where(l => l.longitude == coordonneesSmartphone[0] && l.latitude == coordonneesSmartphone[1]);
-            res = (DbSet<Lieu>)db.LieuSet ; //.Where(l => l.longitude == coordonneesSmartphone[0]);
+            res = db.LieuSet.Where(l => l.abscisses == c && l.ordonnées == d).ToList<Lieu>(); //.Where(l => l.longitude == coordonneesSmartphone[0]);
 
 
            //Lieu lieu = await db.LieuSet.FindAsync(id2);
