@@ -43,9 +43,12 @@ namespace ServeurSmartCity.Controllers
         public async Task<IHttpActionResult> GetLieuByPosition(float latitude, float longitude)
         {
             short[] coordonneesSmartphone = new short[2];
-            DonneesGeographiques.calculerCoordonnees(longitude, latitude, coordonneesSmartphone);
+            List<LieuResume> res;
 
-            List<LieuResume> res = requeteChercherProximite(coordonneesSmartphone[0], coordonneesSmartphone[1], 1);
+            DonneesGeographiques.calculerCoordonnees(longitude, latitude, coordonneesSmartphone);
+            if (!DonneesGeographiques.coordonneesDansLimites(coordonneesSmartphone)) return Json("Le point donné n'est pas dans les limites");
+
+            res = requeteChercherProximite(coordonneesSmartphone[0], coordonneesSmartphone[1], 1);
 
             return Json(res);
         }
@@ -54,6 +57,7 @@ namespace ServeurSmartCity.Controllers
         {
             short[] coordonneesSmartphone = new short[2];
             DonneesGeographiques.calculerCoordonnees(longitude, latitude, coordonneesSmartphone);
+            if (!DonneesGeographiques.coordonneesDansLimites(coordonneesSmartphone)) return Json("Le point donné n'est pas dans les limites");
 
             List<LieuResume> res = requeteChercherProximite(coordonneesSmartphone[0], coordonneesSmartphone[1], limite);
 

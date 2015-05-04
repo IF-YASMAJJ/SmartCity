@@ -15,6 +15,7 @@ namespace ServeurSmartCity.Models
         /// </summary>
         private static float minLong, maxLong, minLat, maxLat;
         private static short abscisseMax, coordonneeMax;
+        const short abscisseMin = 0, coordonneeMin = 0;
 
         /// <summary>
         /// Initialise les extremums de la classe. Les paramètres doivent être donnés en degrés décimaux.
@@ -73,6 +74,16 @@ namespace ServeurSmartCity.Models
             float dLong = (float) Math.Abs(rayonTerre * (Math.Cos(((maxLat+minLat)/2) * Math.PI/180)) * (long2 - long1));
             
             return (float) Math.Sqrt(Math.Pow(dLat,2.0) + Math.Pow(dLong,2.0));
+        }
+
+        public static bool coordonneesDansLimites(short[] coordonnees)
+        {
+            if (coordonnees[0] < abscisseMin) return false;
+            if (coordonnees[0] > abscisseMax) return false;
+            if (coordonnees[1] < coordonneeMin) return false;
+            if (coordonnees[1] > coordonneeMax) return false;
+
+            return true;
         }
     }
 }
