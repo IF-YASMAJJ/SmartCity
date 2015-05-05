@@ -16,20 +16,20 @@ namespace ServeurSmartCity.Controllers
 {
     public class LieuxController : ApiController
     {
-        private ModelContainer db = new ModelContainer();
+        private LieuDAO dao = new LieuDAO();
         private const int nbResultatsMinimum = 200;
 
         // GET: api/Lieux
         public IHttpActionResult GetLieuSet()
         {
-            return Json(db.LieuResume.ToList<LieuResume>());
+             return Json(dao.listAll());        
         }
 
         // GET: api/Lieux/5
         [ResponseType(typeof(Lieu))]
         public async Task<IHttpActionResult> GetLieu(int id)
         {
-            Lieu lieu = await db.LieuSet.FindAsync(id);
+            Lieu lieu = await dao.getById(id);
             if (lieu == null)
             {
                 return NotFound();
@@ -48,7 +48,7 @@ namespace ServeurSmartCity.Controllers
             DonneesGeographiques.calculerCoordonnees(longitude, latitude, coordonneesSmartphone);
             if (!DonneesGeographiques.coordonneesDansLimites(coordonneesSmartphone)) return Json("Le point donné n'est pas dans les limites");
 
-            res = requeteChercherProximite(coordonneesSmartphone[0], coordonneesSmartphone[1], 1);
+            res = dao.requeteChercherProximite(coordonneesSmartphone[0], coordonneesSmartphone[1], 1, nbResultatsMinimum);
 
             return Json(res);
         }
@@ -59,7 +59,7 @@ namespace ServeurSmartCity.Controllers
             DonneesGeographiques.calculerCoordonnees(longitude, latitude, coordonneesSmartphone);
             if (!DonneesGeographiques.coordonneesDansLimites(coordonneesSmartphone)) return Json("Le point donné n'est pas dans les limites");
 
-            List<LieuResume> res = requeteChercherProximite(coordonneesSmartphone[0], coordonneesSmartphone[1], limite);
+            List<LieuResume> res = dao.requeteChercherProximite(coordonneesSmartphone[0], coordonneesSmartphone[1], limite, nbResultatsMinimum);
 
             return Json(res);
         }
@@ -68,29 +68,16 @@ namespace ServeurSmartCity.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                dao.dispose();
             }
             base.Dispose(disposing);
         }
 
         private bool LieuExists(int id)
         {
-            return db.LieuSet.Count(e => e.Id == id) > 0;
+            return dao.LieuExists(id);
         }
 
-        private List<LieuResume> requeteChercherProximite(short abscTelephone, short ordTelephone, short ecart)
-        {
-            List<LieuResume> res = db.LieuResume.Where(l =>  l.abscisses >= abscTelephone-ecart && 
-                                                    l.abscisses <= abscTelephone+ecart &&
-                                                    l.ordonnees >= ordTelephone-ecart &&
-                                                    l.ordonnees <= ordTelephone+ecart).ToList<LieuResume>();
-            if (res.Count < nbResultatsMinimum)
-            {
-                return requeteChercherProximite(abscTelephone, ordTelephone, ++ecart);
-            }
-            else{
-                return res;
-            }
-        }
+        
     }
 }
