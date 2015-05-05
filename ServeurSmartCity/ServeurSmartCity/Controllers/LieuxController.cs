@@ -55,7 +55,7 @@ namespace ServeurSmartCity.Controllers
             return Json(res);
         }
 
-        // GET: api/Lieux/4.83/45.76/
+        // GET: api/Lieux/4.83/45.76/50
         public async Task<IHttpActionResult> GetLieuByPositionLimite(float latitude, float longitude, short limite)
         {
             short[] coordonneesSmartphone = new short[2];

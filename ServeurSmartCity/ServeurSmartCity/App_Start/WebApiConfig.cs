@@ -26,7 +26,7 @@ namespace ServeurSmartCity
             //ajout d'une nouvelle route vers getLieuByPosition
             config.Routes.MapHttpRoute(
                 name: "localisation",
-                routeTemplate: "api/{controller}/{latitude}/{longitude}/{limite}",
+                routeTemplate: "api/{controller}/{longitude}/{latitude}/{limite}",
                 defaults: new { limite = RouteParameter.Optional }
             );
 
