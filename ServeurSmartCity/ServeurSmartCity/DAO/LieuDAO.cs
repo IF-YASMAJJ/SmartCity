@@ -65,6 +65,11 @@ namespace ServeurSmartCity.DAO
 
         public List<LieuResume> requeteChercherProximite(short abscTelephone, short ordTelephone, short ecart, int nbResultatsMinimum)
         {
+            List<LieuResume> liste = db.LieuResume.ToList<LieuResume>();
+            if(nbResultatsMinimum >= liste.Count)
+            {
+                return liste;
+            }
             List<LieuResume> res = db.LieuResume.Where(l => l.abscisses >= abscTelephone - ecart &&
                                                     l.abscisses <= abscTelephone + ecart &&
                                                     l.ordonnees >= ordTelephone - ecart &&

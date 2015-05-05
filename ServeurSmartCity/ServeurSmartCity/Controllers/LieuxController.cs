@@ -18,7 +18,7 @@ namespace ServeurSmartCity.Controllers
     {
 
         private LieuDAO dao = new LieuDAO();
-        private const int nbResultatsMinimum = 200;
+        private const int nbResultatsMinimum = 10;
 
 
         // GET: api/Lieux
@@ -62,7 +62,7 @@ namespace ServeurSmartCity.Controllers
             DonneesGeographiques.calculerCoordonnees(longitude, latitude, coordonneesSmartphone);
             if (!DonneesGeographiques.coordonneesDansLimites(coordonneesSmartphone)) return Json("Le point donné n'est pas dans les limites");
 
-            List<LieuResume> res = dao.requeteChercherProximite(coordonneesSmartphone[0], coordonneesSmartphone[1], limite, nbResultatsMinimum);
+            List<LieuResume> res = dao.requeteChercherProximite(coordonneesSmartphone[0], coordonneesSmartphone[1], 1, limite);
 
             return Json(res);
         }
