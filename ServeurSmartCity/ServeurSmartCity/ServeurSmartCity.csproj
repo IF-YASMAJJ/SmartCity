@@ -28,7 +28,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <IntermediateOutputPath>F:\TEMP\vs3CE2.tmp\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\Simon\AppData\Local\Temp\vs300D.tmp\Debug\</IntermediateOutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -37,7 +37,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <IntermediateOutputPath>F:\TEMP\vs3CE2.tmp\Release\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\Simon\AppData\Local\Temp\vs300D.tmp\Release\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
