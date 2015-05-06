@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Threading.Tasks;
 using ServeurSmartCity.JsonModel;
+using System.Data.Entity;
 
 namespace ServeurSmartCity.DAO
 {
@@ -20,11 +21,11 @@ namespace ServeurSmartCity.DAO
             return await  db.SaveChangesAsync();   
         }
 
-        public int deleteLieux()
+        public async Task<int> deleteLieux()
         {
             try
             {
-                return db.Database.ExecuteSqlCommand("TRUNCATE TABLE [LieuSet]");
+                return await db.Database.ExecuteSqlCommandAsync("TRUNCATE TABLE [LieuSet]");
             }
             catch(Exception e)
             {
@@ -45,11 +46,11 @@ namespace ServeurSmartCity.DAO
 
         }
 
-        public List<LieuResume> listAll()
+        public async Task<List<LieuResume>> listAll()
         {
             try
             { 
-                return db.LieuResume.ToList<LieuResume>();
+                return await db.LieuResume.ToListAsync<LieuResume>();
             }
             catch(Exception e)
             {
@@ -63,24 +64,29 @@ namespace ServeurSmartCity.DAO
             return lieu;
         }
 
-        public List<LieuResume> requeteChercherProximite(short abscTelephone, short ordTelephone, short ecart, int nbResultatsMinimum)
+        public async Task<List<LieuResume>> requeteChercherProximite(short abscTelephone, short ordTelephone, short ecart, int nbResultatsMinimum)
         {
-            List<LieuResume> liste = db.LieuResume.ToList<LieuResume>();
-            if(nbResultatsMinimum >= liste.Count)
+            List<LieuResume> liste = await db.LieuResume.ToListAsync<LieuResume>();
+            if (nbResultatsMinimum >= liste.Count)
             {
                 return liste;
             }
-            List<LieuResume> res = db.LieuResume.Where(l => l.abscisses >= abscTelephone - ecart &&
-                                                    l.abscisses <= abscTelephone + ecart &&
-                                                    l.ordonnees >= ordTelephone - ecart &&
-                                                    l.ordonnees <= ordTelephone + ecart).ToList<LieuResume>();
-            if (res.Count < nbResultatsMinimum)
-            {
-                return requeteChercherProximite(abscTelephone, ordTelephone, ++ecart, nbResultatsMinimum);
-            }
             else
             {
-                return res;
+                List<LieuResume> res = await db.LieuResume.Where(l => l.abscisses >= abscTelephone - ecart &&
+                                                        l.abscisses <= abscTelephone + ecart &&
+                                                        l.ordonnees >= ordTelephone - ecart &&
+                                                        l.ordonnees <= ordTelephone + ecart).ToListAsync<LieuResume>();
+
+
+                if (res.Count < nbResultatsMinimum)
+                {
+                    return await requeteChercherProximite(abscTelephone, ordTelephone, ++ecart, nbResultatsMinimum);
+                }
+                else
+                {
+                    return res;
+                }
             }
         }
 

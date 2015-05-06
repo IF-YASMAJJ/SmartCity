@@ -46,7 +46,7 @@ namespace ServeurSmartCity.JsonReader
         private async void editModel()
         {
             LieuDAO lDao = new LieuDAO();
-            lDao.deleteLieux();
+            await lDao.deleteLieux();
             foreach (Feature f in data.features){
                 Lieu l = new Lieu();
                 short[] coordonnees = new short[2];

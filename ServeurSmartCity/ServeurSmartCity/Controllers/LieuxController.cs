@@ -22,9 +22,9 @@ namespace ServeurSmartCity.Controllers
 
 
         // GET: api/Lieux
-        public IHttpActionResult GetLieuSet()
+        public async Task<IHttpActionResult> GetLieuSet()
         {
-             return Json(dao.listAll());        
+            return Json(await dao.listAll());        
         }
 
         // GET: api/Lieux/5
@@ -50,7 +50,7 @@ namespace ServeurSmartCity.Controllers
             DonneesGeographiques.calculerCoordonnees(longitude, latitude, coordonneesSmartphone);
             if (!DonneesGeographiques.coordonneesDansLimites(coordonneesSmartphone)) return Json("Le point donné n'est pas dans les limites");
 
-            res = dao.requeteChercherProximite(coordonneesSmartphone[0], coordonneesSmartphone[1], 1, nbResultatsMinimum);
+            res = await dao.requeteChercherProximite(coordonneesSmartphone[0], coordonneesSmartphone[1], 1, nbResultatsMinimum);
 
             return Json(res);
         }
@@ -62,7 +62,7 @@ namespace ServeurSmartCity.Controllers
             DonneesGeographiques.calculerCoordonnees(longitude, latitude, coordonneesSmartphone);
             if (!DonneesGeographiques.coordonneesDansLimites(coordonneesSmartphone)) return Json("Le point donné n'est pas dans les limites");
 
-            List<LieuResume> res = dao.requeteChercherProximite(coordonneesSmartphone[0], coordonneesSmartphone[1], 1, limite);
+            List<LieuResume> res = await dao.requeteChercherProximite(coordonneesSmartphone[0], coordonneesSmartphone[1], 1, limite);
 
             return Json(res);
         }
