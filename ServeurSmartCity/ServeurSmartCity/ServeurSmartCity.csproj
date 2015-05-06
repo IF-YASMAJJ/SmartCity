@@ -29,6 +29,17 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <IntermediateOutputPath>C:\Users\Simon\AppData\Local\Temp\vs300D.tmp\Debug\</IntermediateOutputPath>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="ModelContainer-Déploiement" Order="1">
+          <Destination Path="" />
+          <Object Type="DbFullSql">
+            <PreSource Path="Data Source=%28LocalDB%29\v11.0%3bAttachDbFilename=|DataDirectory|\Database1.mdf%3bIntegrated Security=True%3bConnect Timeout=30%3bApplication Name=EntityFramework" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="C:\Users\Simon\AppData\Local\Temp\vs300D.tmp\Debug\AutoScripts\ModelContainer-Déploiement_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -38,6 +49,17 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <IntermediateOutputPath>C:\Users\Simon\AppData\Local\Temp\vs300D.tmp\Release\</IntermediateOutputPath>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="ModelContainer-Déploiement" Order="1">
+          <Destination Path="" />
+          <Object Type="DbFullSql">
+            <PreSource Path="Data Source=%28LocalDB%29\v11.0%3bAttachDbFilename=|DataDirectory|\Database1.mdf%3bIntegrated Security=True%3bMultipleActiveResultSets=True%3bConnect Timeout=30%3bApplication Name=EntityFramework" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="C:\Users\Simon\AppData\Local\Temp\vs300D.tmp\Release\AutoScripts\ModelContainer-Déploiement_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
@@ -89,7 +111,9 @@
     <Content Include="Global.asax" />
     <Content Include="Models\dbo.LieuResume.sql" />
     <Content Include="Models\Model.edmx.sql" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
