@@ -1,0 +1,10 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/logo_icone"/>
+    <item>
+        <shape
+            android:shape="oval">
+            <solid android:color="#00FFFFFF"/>
+            <stroke android:width="2dp" android:color="#FFFFFFFF"/>
+        </shape>
+    </item>
+</layer-list>

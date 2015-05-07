@@ -1,0 +1,53 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+
+    android:layout_height="match_parent"
+    android:background="#4E1704"
+    android:id="@+id/layoutAll">
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:layout_marginTop="5dp">
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="Voir\ncarte"
+            android:id="@+id/btnCarte"
+            android:background="@drawable/shape_btncarte"
+            android:textSize="20dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#FFFFFF"
+            android:layout_marginLeft="10dp" />
+
+        <ImageView
+            android:layout_width="160dp"
+            android:layout_height="49dp"
+            android:id="@+id/imgTitle"
+            android:src="@drawable/logo_title"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollLieux"
+        android:layout_gravity="center_horizontal"
+        android:fillViewport="false"
+        android:layout_marginTop="10dp" >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/layoutListeLieux">
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
